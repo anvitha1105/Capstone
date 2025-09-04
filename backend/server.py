@@ -33,6 +33,10 @@ security = HTTPBearer()
 
 # Create the main app
 app = FastAPI(title="AI Cognitive Platform API")
+@app.get("/")
+async def home():
+    return {"message": "Welcome to AI Cognitive Platform API!"}
+
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
