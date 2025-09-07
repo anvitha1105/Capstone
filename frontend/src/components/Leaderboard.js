@@ -17,10 +17,7 @@ const Leaderboard = () => {
 
   const fetchLeaderboard = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${API}/leaderboard`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get(`${API}/leaderboard`);
       setLeaderboardData(response.data);
     } catch (error) {
       console.error('Error fetching leaderboard:', error);

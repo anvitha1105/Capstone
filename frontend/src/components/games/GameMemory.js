@@ -38,10 +38,7 @@ const GameMemory = () => {
 
   const fetchGameData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${API}/games/memory/data?difficulty=${level}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get(`${API}/games/memory/data?difficulty=${level}`);
       setSequence(response.data.sequence);
       setGameData(response.data);
       setGameState('showing');
@@ -135,14 +132,11 @@ const GameMemory = () => {
     setGameState('finished');
 
     try {
-      const token = localStorage.getItem('token');
       const response = await axios.post(`${API}/games/score`, {
         game_type: 'memory_challenge',
         score: score,
         accuracy: accuracy,
         time_taken: totalTime
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
       });
       
       console.log('Score submitted:', response.data);

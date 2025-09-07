@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../App';
 import { 
   Brain, 
@@ -8,20 +8,13 @@ import {
   Target, 
   Trophy, 
   BarChart3, 
-  LogOut, 
   Zap,
   Timer,
   Users
 } from 'lucide-react';
 
 const Dashboard = () => {
-  const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
+  const { user } = useContext(AuthContext);
 
   const games = [
     {
@@ -74,13 +67,7 @@ const Dashboard = () => {
             <Link to="/stats" className="nav-link">
               Stats
             </Link>
-            <button 
-              onClick={handleLogout}
-              className="nav-link flex items-center gap-2 hover:text-red-400"
-            >
-              <LogOut className="w-4 h-4" />
-              Logout
-            </button>
+            {/* Auth removed: open access */}
           </div>
         </div>
       </nav>

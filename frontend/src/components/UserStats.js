@@ -26,10 +26,7 @@ const UserStats = () => {
 
   const fetchUserStats = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${API}/stats/user`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get(`${API}/stats/user`);
       setStats(response.data);
     } catch (error) {
       console.error('Error fetching user stats:', error);

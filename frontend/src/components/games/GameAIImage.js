@@ -34,10 +34,7 @@ const GameAIImage = () => {
 
   const fetchGameData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`${API}/games/ai-image/data`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get(`${API}/games/ai-image/data`);
       setGameData(response.data);
       setGameState('playing');
       setStartTime(Date.now());
@@ -93,14 +90,11 @@ const GameAIImage = () => {
     setGameState('finished');
 
     try {
-      const token = localStorage.getItem('token');
       const response = await axios.post(`${API}/games/score`, {
         game_type: 'ai_image',
         score: score,
         accuracy: accuracy,
         time_taken: totalTime
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
       });
       
       console.log('Score submitted:', response.data);
