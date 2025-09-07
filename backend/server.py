@@ -29,7 +29,8 @@ JWT_ALGORITHM = 'HS256'
 JWT_EXPIRATION_HOURS = 24
 
 # Security
-security = HTTPBearer()
+# Allow missing credentials to enable anonymous access
+security = HTTPBearer(auto_error=False)
 
 # Create the main app
 app = FastAPI(title="AI Cognitive Platform API")
@@ -102,6 +103,15 @@ def create_jwt_token(user_id: str, username: str) -> str:
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
 
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    # If no credentials are provided, return or create a default Guest user
+    if credentials is None:
+        guest = await db.users.find_one({"id": "guest"})
+        if not guest:
+            guest_user = User(id="guest", username="Guest", email="guest@example.com")
+            await db.users.insert_one(guest_user.dict())
+            return guest_user
+        return User(**guest)
+
     try:
         payload = jwt.decode(credentials.credentials, JWT_SECRET, algorithms=[JWT_ALGORITHM])
         user_id = payload.get('user_id')

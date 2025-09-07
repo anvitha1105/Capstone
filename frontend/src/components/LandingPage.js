@@ -45,11 +45,11 @@ const LandingPage = () => {
             CognitiveArena
           </div>
           <div className="flex gap-4">
-            <Link to="/login" className="px-6 py-3 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
-              Sign In
+            <Link to="/dashboard" className="px-6 py-3 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+              Dashboard
             </Link>
-            <Link to="/register" className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 font-medium">
-              Get Started
+            <Link to="/leaderboard" className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 font-medium">
+              View Leaderboard
             </Link>
           </div>
         </nav>
@@ -67,13 +67,13 @@ const LandingPage = () => {
           </p>
           <div className="flex justify-center gap-6 mt-8">
             <Link 
-              to="/register" 
+              to="/dashboard" 
               className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1"
             >
               Start Challenging AI
             </Link>
             <Link 
-              to="/login" 
+              to="/leaderboard" 
               className="px-8 py-4 border border-slate-600 text-slate-300 text-lg font-semibold rounded-xl hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300"
             >
               View Leaderboard
@@ -155,7 +155,7 @@ const LandingPage = () => {
               Discover your strengths and push the boundaries of human intelligence.
             </p>
             <Link 
-              to="/register" 
+              to="/dashboard" 
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-lg font-semibold rounded-xl hover:shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-1"
             >
               <Brain className="w-6 h-6" />
